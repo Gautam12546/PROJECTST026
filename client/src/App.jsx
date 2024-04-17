@@ -1,14 +1,14 @@
 // import Loginsign from "./Components/Loginsign";
-// import Loginsign from './Components/Loginsign';
-import Belowbx from './Components/Belowbx'
+import Loginsign from './Components/Loginsign';
+// import Belowbx from './Components/Belowbx'
 import Card from './Components/Card';
 function App() {
  
   return (
      <div>
        <Card/>
-      {/* <Loginsign/> */}
-      <Belowbx/>
+      <Loginsign/>
+      {/* <Belowbx/> */}
      </div>
   )
 }
