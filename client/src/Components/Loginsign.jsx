@@ -37,8 +37,6 @@ const Loginsign = () => {
           
           {action==="Sign Up" ? 
           <div className='flex flex-row gap-1'>
-          <input className='cursor-pointer' type="checkbox" id='78' />
-          <label className='cursor-pointer text-blue-800' htmlFor="78">Remember me</label>
           </div>:
           <div className='flex flex-row gap-1'>
            <a className='text-red-500 cursor-pointer' href="#">Forgot password</a>
