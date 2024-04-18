@@ -27,7 +27,7 @@ const Loginsign = () => {
       <div className="bg-purple-300 rounded-lg p-8 w-[100%] sm:w-2/3 lg:w-1/3 flex flex-col justify-center">
           
         <form className="flex flex-col gap-2" action="">
-          <input type="text" placeholder="Username" className="p-2 border border-gray-400 rounded-lg" />
+          <input type="email" placeholder="Email Adress" className="p-2 border border-gray-400 rounded-lg" />
           <input onChange={changeHandler} name="password" type="password" placeholder="Password" className="p-2 border border-gray-400 rounded-lg" />
           {action === "Sign Up" && (
             <input onChange={changeHandler} name="cpassword" type="password" placeholder="Confirm Password" className="p-2 border border-gray-400 rounded-lg" />
@@ -37,10 +37,10 @@ const Loginsign = () => {
           <div className='flex flex-row gap-1'>
           </div>:
           <div className='flex flex-row gap-1'>
-           <a className='text-red-500 cursor-pointer' href="#">Forgot password</a>
+           <a  className='text-red-500 cursor-pointer' href="#">Forgot password</a>
           </div>
           }
-
+         
           <input
             type="submit"
             value={action === "Sign Up" ? "Sign Up" : "Log In"}
