@@ -20,11 +20,13 @@ const Loginsign = () => {
   }
 
   return (
-    <div className="h-screen w-screen flex flex-col justify-center items-center">
-       <fieldset className='bg-purple-300 w-[90%] flex flex-col justify-center items-center rounded-[20px]'>
+    <>
+    <Card />
+    <div className="w-screen h-screen flex flex-col justify-center items-center">
+       <fieldset className='bg-orange-300 w-[90%] flex flex-col justify-center items-center rounded-[20px]'>
        <legend className='h-24 w-24 rounded-full bg-black text-center'><img className='h-24 w-24 object-cover rounded-full' src={images} alt="" /></legend>
       <h2 className="text-2xl font-semibold">{action} to see more</h2>
-      <div className="bg-purple-300 rounded-lg p-8 w-[100%] sm:w-2/3 lg:w-1/3 flex flex-col justify-center">
+      <div className="bg-orange-300 rounded-lg p-8 w-[100%] sm:w-2/3 lg:w-1/3 flex flex-col justify-center">
           
         <form className="flex flex-col gap-2" action="">
           <input type="email" placeholder="Email Adress" className="p-2 border border-gray-400 rounded-lg" />
@@ -44,7 +46,7 @@ const Loginsign = () => {
           <input
             type="submit"
             value={action === "Sign Up" ? "Sign Up" : "Log In"}
-            className="p-2 bg-purple-600 text-white font-semibold rounded-md cursor-pointer hover:bg-purple-700"
+            className="p-2 bg-orange-600 text-white font-semibold rounded-md cursor-pointer"
           />
         </form>
         <p className='text-xs font-semibold text-zinc-500 mt-5 w-4/3 mx-auto text-center'>By continuing, you agree to Our Terms of Service; Opens a new tab and acknowledge you've read our Privacy Policy; Notice at collection; 
@@ -67,6 +69,7 @@ const Loginsign = () => {
       </div>
       </fieldset>
     </div>
+    </>
   );
 };
 
