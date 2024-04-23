@@ -8,7 +8,7 @@ import Profile from './Components/Profile';
 // import UserProfileCard from './Components/UserProfileCard'
 import React from 'react';
 import Loginsign from './Components/Loginsign';
-// import Belowbx from './Components/Belowbx'
+import Belowbx from './Components/Belowbx'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Cart from './Components/Cart';
 import Button from './Components/Button';
