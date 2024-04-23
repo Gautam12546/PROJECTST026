@@ -1,3 +1,11 @@
+
+
+// import Loginsign from './Components/Loginsign';
+// import Belowbx from './Components/Belowbx'
+// import Card from './Components/Card';
+
+import Profile from './Components/Profile';
+// import UserProfileCard from './Components/UserProfileCard'
 import React from 'react';
 import Loginsign from './Components/Loginsign';
 import Belowbx from './Components/Belowbx'
@@ -13,8 +21,9 @@ function App() {
         <Route path="/admin" element={<AdminComponent />} />
         <Route path="/cart" element={<Cart button={<Button />}/>} />
         <Route path="/signup" element={<Loginsign />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
   )
 }
 
