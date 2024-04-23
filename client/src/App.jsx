@@ -9,8 +9,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Belowbx />} /> */}
-        <Route path="/" element={<AdminComponent />} />
+        <Route path="/" element={<Belowbx />} />
+        <Route path="/admin" element={<AdminComponent />} />
         <Route path="/cart" element={<Cart button={<Button />}/>} />
         <Route path="/signup" element={<Loginsign />} />
       </Routes>
