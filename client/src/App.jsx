@@ -22,6 +22,7 @@ function App() {
         <Route path="/admin" element={<AdminComponent />} />
         <Route path="/cart" element={<Cart button={<Button />}/>} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/signup" element={<Loginsign />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
       </BrowserRouter>
