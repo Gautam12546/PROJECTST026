@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Cart from './Components/Cart';
 import Button from './Components/Button';
 import AdminComponent from './Components/AdminComponent';
+import Register from './Components/Register';
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Belowbx />} />
         <Route path="/admin" element={<AdminComponent />} />
         <Route path="/cart" element={<Cart button={<Button />}/>} />
-        <Route path="/signup" element={<Loginsign />} />
+        <Route path="/signup" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
       </BrowserRouter>

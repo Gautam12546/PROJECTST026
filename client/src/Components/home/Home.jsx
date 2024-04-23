@@ -25,7 +25,7 @@ const Home = () => {
         </div>
 
 
-      <footer className='flex flex-row w-4/5 h-16 fixed bottom-3 items-center justify-around cur  border-gray-200 bg-orange-600 m-3 rounded-xl'>
+      <footer className='flex flex-row w-4/5 h-16 fixed bottom-3 items-center justify-around   border-gray-200 bg-orange-600 m-3 rounded-xl'>
            <MdQrCodeScanner fontSize="1.95rem" />
             <button className='text-[35px] font-medium pb-1 pr-0'>scan now</button>
        </footer>
