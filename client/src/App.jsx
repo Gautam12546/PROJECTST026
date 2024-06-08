@@ -14,17 +14,18 @@ import Cart from './Components/Cart';
 import Button from './Components/Button';
 import AdminComponent from './Components/AdminComponent';
 import Home from './Components/home/Home';
+import Auth from './Components/Auth';
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Belowbx />} />
-        <Route path="/admin" element={<AdminComponent />} />
-        <Route path="/cart" element={<Cart button={<Button />}/>} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signup" element={<Loginsign />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/home/:id" element={<Belowbx />} />
+        <Route path="/admin" element={<Auth><AdminComponent /></Auth>} />
+        {/* <Route path="/cart" element={<Cart button={<Button />}/>} /> */}
+        {/* <Route path="/signup" element={<Register />} /> */}
+        {/* <Route path="/signup" element={<Loginsign />} /> */}
+        {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>
       </BrowserRouter>
   )

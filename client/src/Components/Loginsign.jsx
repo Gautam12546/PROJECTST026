@@ -1,18 +1,65 @@
 import React  from 'react';
+import BackButton from './BackButton';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import {toast} from 'react-toastify';
 
+const Loginsign = ({setShowModel}) => {
+  const [cookies, setCookie] = useCookies(['token']);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-const Loginsign = () => {
+  const navigate = useNavigate();
+
+  const handlelogin = (event) => {
+    event.preventDefault();
+    if(!email || !password){
+      return toast.error('Invalid User Data');
+    }
+    const data = {
+      email,
+      password,
+    };
+    axios
+      .post("http://localhost:3000/login", data)
+      .then((response) => {
+        const token = response.data.token;
+
+        if (token) {
+          setCookie('token', token);
+          toast.success(response.data.message);
+          navigate("/admin");
+        }
+        else{
+          toast.error(response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <> 
       <div className="w-screen h-screen flex flex-col justify-center items-center">
         <fieldset className='bg-orange-300 w-[90%] flex flex-col justify-center items-center rounded-[20px]'>
           <legend className='h-32 w-32 rounded-full bg-black text-center'><img className=' object-cover rounded-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSXay82N9LNLzTzuSIp2R6grADgY_P42jJw&usqp=CAU" alt="" /></legend>
-          <h2 className="text-2xl font-semibold">Log to see more</h2>
+          <div className='flex justify-start w-[100%]'>
+            <div className='w-[20%] flex justify-start pl-5'>
+          <BackButton setShowModel={setShowModel} destination='/' />
+          </div>
+          <div className='flex w-[80%] pl-14'>
+          <h2 className="text-2xl font-semibold">LogIn</h2>
+          </div>
+          </div>
+          
           <div className="bg-orange-300 rounded-lg p-8 w-[100%] sm:w-2/3 lg:w-1/3 flex flex-col justify-center">
 
-            <form className="flex flex-col gap-2" action="">
-              <input type="email" placeholder="Email Address" className="p-2 border border-gray-400 rounded-lg" />
-              <input name="password" type="password" placeholder="Password" className="p-2 border border-gray-400 rounded-lg" />
+            <form className="flex flex-col gap-2" onSubmit={handlelogin}>
+              <input type="email" placeholder="Email Address" className="p-2 border border-gray-400 rounded-lg" onChange={(e) => setEmail(e.target.value)} value={email} />
+              <input name="password" type="password" placeholder="Password" className="p-2 border border-gray-400 rounded-lg" value={password} onChange={(e) => setPassword(e.target.value)} />
 
               <input
                 type="submit"

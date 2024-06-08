@@ -1,7 +1,7 @@
 import { BsArrowLeft } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-function BackButton({ destination = '/admin' ,setShowModel}) {
+function BackButton({ destination ,setShowModel}) {
   return (
     <div className='flex'>
         <Link 
