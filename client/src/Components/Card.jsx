@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const Card = ({id}) => {
   const [userData,setUserData] = useState({});
   useEffect(() => {
-    axios.get('http://localhost:3000/getdata', {
+    axios.get('https://restro-27c7.onrender.com/getdata', {
         params: { value: id }
     })
     .then((response) => {

@@ -18,7 +18,7 @@ function Createmenu({ setShowModel, setChange }) {
     if (cookies.token) {
       const decodedToken = jwtDecode(cookies.token);
       setValue(decodedToken.data);
-      axios.get('http://localhost:3000/getdata', {
+      axios.get('https://restro-27c7.onrender.com/getdata', {
         params: {
           value: decodedToken.data
         }
@@ -42,7 +42,7 @@ function Createmenu({ setShowModel, setChange }) {
     formData.append('file', file);
     formData.append('value', value);
 
-    axios.post("http://localhost:3000/addmenu", formData, {
+    axios.post("https://restro-27c7.onrender.com/addmenu", formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

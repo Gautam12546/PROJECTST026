@@ -14,7 +14,7 @@ function Editmenu({setShowModel2,itemId,setChange}) {
     const [userData,setUserData] = useState({});
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/itemdetail', {
+        axios.get('https://restro-27c7.onrender.com/itemdetail', {
       params: {
         value: itemId
       }
@@ -33,7 +33,7 @@ function Editmenu({setShowModel2,itemId,setChange}) {
       if (cookies.token) {
         const decodedToken = jwtDecode(cookies.token);
   
-        axios.get('http://localhost:3000/getdata', {
+        axios.get('https://restro-27c7.onrender.com/getdata', {
           params: {
             value: decodedToken.data
           }
@@ -54,7 +54,7 @@ function Editmenu({setShowModel2,itemId,setChange}) {
         formData.append('price', price);
         formData.append('category', categorys);
         formData.append('file', file);
-        axios.put(`http://localhost:3000/menu/${itemId}`, formData, {
+        axios.put(`https://restro-27c7.onrender.com/menu/${itemId}`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

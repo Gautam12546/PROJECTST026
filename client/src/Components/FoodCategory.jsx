@@ -10,7 +10,7 @@ const FoodCategory = ({ pic, name, onClick, minus, id, setChange}) => {
   
   const handleDelete = (itemId) => {
     const decodedToken = jwtDecode(cookies.token);
-    axios.delete(`http://localhost:3000/category/${itemId}`, {
+    axios.delete(`https://restro-27c7.onrender.com/category/${itemId}`, {
       params: {
         value: decodedToken.data
       }

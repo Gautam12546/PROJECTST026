@@ -26,7 +26,7 @@ const Register = ({ setShowModel1 }) => {
     };
     console.log(data);
     axios
-      .post("http://localhost:3000/register", data)
+      .post("https://restro-27c7.onrender.com/register", data)
       .then((response) => {
 
           toast.success(response.data.message);

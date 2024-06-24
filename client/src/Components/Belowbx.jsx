@@ -15,7 +15,7 @@ function Belowbx() {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/usermenu', {
+        axios.get('https://restro-27c7.onrender.com/usermenu', {
             params: { value: id }
         })
         .then((response) => {
@@ -43,7 +43,7 @@ function Belowbx() {
             <div className="grid grid-cols-4 gap-4 flex-wrap">
             <FoodCategory pic={All} name='All' minus={false} onClick={() => handleCategoryClick('All')} />
             {userData.category && userData.category.slice().reverse().map((category, index) => (
-          <FoodCategory key={index} pic={`http://localhost:3000/uploads/${category.categoryImage}`} name={category.categoryName} minus={false} onClick={() => handleCategoryClick(category.categoryName)} />
+          <FoodCategory key={index} pic={`https://restro-27c7.onrender.com/uploads/${category.categoryImage}`} name={category.categoryName} minus={false} onClick={() => handleCategoryClick(category.categoryName)} />
         ))}
             </div>
             <hr />
@@ -53,7 +53,7 @@ function Belowbx() {
                     <div key={index} className='flex flex-col my-3 justify-center items-center'>
                         <img
                             className='w-[90%] rounded-lg'
-                            src={`http://localhost:3000/uploads/${item.productImage}`}
+                            src={`https://restro-27c7.onrender.com/uploads/${item.productImage}`}
                             alt={item.productName}
                         />
                         <div className='flex flex-col justify-between w-full'>

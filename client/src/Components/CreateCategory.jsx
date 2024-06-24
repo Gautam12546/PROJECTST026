@@ -26,7 +26,7 @@ function CreateCategory({setShowModel2,setChange}) {
         formData.append('file', file);
         formData.append('value', value);
 
-        axios.post("http://localhost:3000/addcategory", formData, {
+        axios.post("https://restro-27c7.onrender.com/addcategory", formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }

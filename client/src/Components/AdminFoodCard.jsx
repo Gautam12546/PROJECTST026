@@ -18,7 +18,7 @@ function AdminFoodCard({ change, category,setChange }) {
   useEffect(() => {
     const decodedToken = jwtDecode(cookies.token);
 
-    axios.get('http://localhost:3000/menu', {
+    axios.get('https://restro-27c7.onrender.com/menu', {
       params: {
         value: decodedToken.data
       }
@@ -36,7 +36,7 @@ function AdminFoodCard({ change, category,setChange }) {
 
   const handleDelete = (itemId) => {
     const decodedToken = jwtDecode(cookies.token);
-    axios.delete(`http://localhost:3000/menu/${itemId}`, {
+    axios.delete(`https://restro-27c7.onrender.com/menu/${itemId}`, {
       params: {
         value: decodedToken.data
       }
@@ -68,7 +68,7 @@ function AdminFoodCard({ change, category,setChange }) {
     <div>
       {filteredItems.slice().reverse().map((item, index) => (
         <div key={index} className='flex flex-col my-3 justify-center items-center'>
-          <img className='w-[90%] rounded-lg' src={`http://localhost:3000/uploads/${item.productImage}` || "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} alt={item.productName} />
+          <img className='w-[90%] rounded-lg' src={`https://restro-27c7.onrender.com/uploads/${item.productImage}` || "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} alt={item.productName} />
           <div className='flex flex-col justify-between w-full'>
             <div className='w-[90%] mx-5'>
               <div className='flex items-center justify-between'>

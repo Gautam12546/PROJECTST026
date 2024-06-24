@@ -26,7 +26,7 @@ const AdminComponent = () => {
   useEffect(() => {
     const decodedToken = jwtDecode(cookies.token);
 
-    axios.get('http://localhost:3000/getdata', {
+    axios.get('https://restro-27c7.onrender.com/getdata', {
       params: {
         value: decodedToken.data
       }
