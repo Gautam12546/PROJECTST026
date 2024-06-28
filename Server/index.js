@@ -51,7 +51,7 @@ app.post('/register', async (req, res) => {
     });
     res.send({ message: "Verify your Email", data: newuser });
     const encodedToken = encodeURIComponent(verificationToken);
-    const verificationLink = `http://localhost:3000/verify/${encodedToken}`;
+    const verificationLink = `https://restro-27c7.onrender.com/verify/${encodedToken}`;
     const transporter = nodemailer.createTransport({
       service:'Gmail',
       host:'smtp.gmail.com',
