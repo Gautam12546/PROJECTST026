@@ -38,16 +38,13 @@ function CreateCategory({setShowModel2,setChange}) {
     function handlesubmit(event){
         event.preventDefault();
     
-        const formData = new FormData();
-        formData.append('itemname', itemname);
-        formData.append('file', file);
-        formData.append('value', value);
-
-        axios.post("https://restro-27c7.onrender.com/addcategory", formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
+        const formData ={
+          itemname,
+          file,
+          value
         }
-        })
+
+        axios.post("https://restro-27c7.onrender.com/addcategory", formData)
         .then((response) => {
             toast.success(response.data.message);
             setChange(prevState => !prevState);
