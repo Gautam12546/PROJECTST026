@@ -27,7 +27,6 @@ function CreateCategory({setShowModel2,setChange}) {
       const storageRef = ref(storage,"image/"+img.name);
       await uploadBytes(storageRef,img);
       const downloadUrl = await getDownloadURL(storageRef);
-      console.log(downloadUrl);
       setFile(downloadUrl);
     }
     else{

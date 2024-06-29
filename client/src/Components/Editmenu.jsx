@@ -65,16 +65,13 @@ function Editmenu({setShowModel2,itemId,setChange}) {
 
     const handleEdit = (event) => {
         event.preventDefault();
-        const formData = new FormData();
-        formData.append('itemname', itemname);
-        formData.append('price', price);
-        formData.append('category', categorys);
-        formData.append('file', file);
-        axios.put(`https://restro-27c7.onrender.com/menu/${itemId}`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        })
+        const formData ={
+          itemname,
+          price,
+          categorys,
+          file
+        }
+        axios.put(`https://restro-27c7.onrender.com/menu/${itemId}`, formData)
           .then((response) => {
             toast.success(response.data.message);
             setChange(prevState => !prevState);
