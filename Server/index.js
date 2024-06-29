@@ -233,7 +233,7 @@ app.get('/itemdetail', async (req, res) => {
 // Update a menu item by ID
 app.put('/menu/:id', async (req, res) => {
   const itemId = req.params.id;
-  const { itemname, price, category, file } = req.body;
+  const { itemname, price, categorys, file } = req.body;
 
   try {
     const user = await ShopUser.findOne({ 'menu._id': itemId });
@@ -249,7 +249,7 @@ app.put('/menu/:id', async (req, res) => {
     // Update the fields
     menuItem.productName = itemname;
     menuItem.productPrice = price;
-    menuItem.productCategory = category;
+    menuItem.productCategory = categorys;
     menuItem.productImage = file;
 
     await user.save();

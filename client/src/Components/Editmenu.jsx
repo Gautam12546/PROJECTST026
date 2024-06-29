@@ -70,7 +70,7 @@ function Editmenu({setShowModel2,itemId,setChange}) {
           price,
           categorys,
           file
-        }
+        } 
         axios.put(`https://restro-27c7.onrender.com/menu/${itemId}`, formData)
           .then((response) => {
             toast.success(response.data.message);
