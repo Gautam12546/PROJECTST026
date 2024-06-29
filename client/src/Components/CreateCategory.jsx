@@ -4,6 +4,8 @@ import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import app from '../../firebase';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 function CreateCategory({setShowModel2,setChange}) {
     const [itemname , setItemName] = useState('');
@@ -17,6 +19,21 @@ function CreateCategory({setShowModel2,setChange}) {
       setValue(decodedToken.data);
     }
   }, [cookies]);
+
+  async function handleUpload(e){
+    const img = e.target.files[0];
+    if(img){
+      const storage = getStorage(app);
+      const storageRef = ref(storage,"image/"+img.name);
+      await uploadBytes(storageRef,img);
+      const downloadUrl = await getDownloadURL(storageRef);
+      console.log(downloadUrl);
+      setFile(downloadUrl);
+    }
+    else{
+      toast.error('Upload img');
+    }
+}
 
     function handlesubmit(event){
         event.preventDefault();
@@ -65,7 +82,7 @@ function CreateCategory({setShowModel2,setChange}) {
             <label className="text-xl text-black mx-2">Category Image</label>
             <input
               type="file"
-              onChange={(e) => setFile(e.target.files[0])} // Handle file change
+              onChange={handleUpload} // Handle file change
               className="border-2 border-gray-500 px-4 py-[4px] w-full rounded-xl text-lg focus:outline-none"
               placeholder="Image"
             />

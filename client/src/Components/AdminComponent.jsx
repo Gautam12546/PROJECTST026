@@ -159,7 +159,7 @@ const model2 = <Model onClose={handleClose2}>
       <div className="grid grid-cols-4 gap-4 flex-wrap">
         <FoodCategory pic={All} name='All' minus={false} onClick={() => handleCategoryClick('All')} />
         {userData.category && userData.category.slice().reverse().map((category, index) => (
-          <FoodCategory key={index} pic={`https://restro-27c7.onrender.com/uploads/${category.categoryImage}`} name={category.categoryName} minus={true} id={category._id} setChange={setChange} onClick={() => handleCategoryClick(category.categoryName)} />
+          <FoodCategory key={index} pic={category.categoryImage} name={category.categoryName} minus={true} id={category._id} setChange={setChange} onClick={() => handleCategoryClick(category.categoryName)} />
         ))}
         <FoodCategory pic={Plus} name='Add' minus={false} onClick={() => {hanldeClick2()}}/>
       </div>

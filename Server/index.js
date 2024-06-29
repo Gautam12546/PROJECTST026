@@ -22,17 +22,17 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const EMAIL = process.env.EMAIL;
 const PASSWORD = process.env.PASSWORD;
 
-const storage = multer.diskStorage({
-  destination: './uploads/',
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: './uploads/',
+//   filename: (req, file, cb) => {
+//     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//   }
+// });
 
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1000000 },
-}); 
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 1000000 },
+// }); 
 
 app.post('/register', async (req, res) => {
   const { email, password, shopName, number } = req.body;
@@ -114,9 +114,9 @@ app.post('/login', async (req, res) => {
 
 
 
-app.post('/addmenu',upload.single('file'), async (req, res) => {
+app.post('/addmenu', async (req, res) => {
   try {
-    const { itemname, price, category, value } = req.body;
+    const { itemname, price, category, file, value } = req.body;
     const user = await ShopUser.findOne({ _id: new mongoose.Types.ObjectId(value) });
     if (!user) {
       return res.status(404).send({ data: null, message: 'User not found' });
@@ -126,7 +126,7 @@ app.post('/addmenu',upload.single('file'), async (req, res) => {
       productName: itemname,
       productPrice: price,
       productCategory: category,
-      productImage: req.file.filename,
+      productImage: file,
     };
 
     user.menu.push(newMenuItem);
@@ -140,9 +140,9 @@ app.post('/addmenu',upload.single('file'), async (req, res) => {
   }
 });
 
-app.post('/addcategory',upload.single('file'), async (req, res) => {
+app.post('/addcategory', async (req, res) => {
   try {
-    const { itemname, value } = req.body;
+    const { itemname, file, value } = req.body;
     const user = await ShopUser.findOne({ _id: new mongoose.Types.ObjectId(value) });
     if (!user) {
       return res.status(404).send({ data: null, message: 'User not found' });
@@ -150,7 +150,7 @@ app.post('/addcategory',upload.single('file'), async (req, res) => {
 
     const newCategoryItem = {
       categoryName: itemname,
-      categoryImage: req.file.filename,
+      categoryImage: file,
     };
 
     user.category.push(newCategoryItem);
@@ -231,9 +231,9 @@ app.get('/itemdetail', async (req, res) => {
 });
 
 // Update a menu item by ID
-app.put('/menu/:id', upload.single('file') , async (req, res) => {
+app.put('/menu/:id', async (req, res) => {
   const itemId = req.params.id;
-  const { itemname, price, category } = req.body;
+  const { itemname, price, category, file } = req.body;
 
   try {
     const user = await ShopUser.findOne({ 'menu._id': itemId });
@@ -250,7 +250,7 @@ app.put('/menu/:id', upload.single('file') , async (req, res) => {
     menuItem.productName = itemname;
     menuItem.productPrice = price;
     menuItem.productCategory = category;
-    menuItem.productImage = req.file.filename;
+    menuItem.productImage = file;
 
     await user.save();
 

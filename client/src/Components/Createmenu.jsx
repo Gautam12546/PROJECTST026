@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
+import app from '../../firebase';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 function Createmenu({ setShowModel, setChange }) {
   const [cookies] = useCookies(['token']);
@@ -31,6 +33,20 @@ function Createmenu({ setShowModel, setChange }) {
       });
     }
   }, [cookies]);
+
+  async function handleUpload(e){
+      const img = e.target.files[0];
+      if(img){
+        const storage = getStorage(app);
+        const storageRef = ref(storage,"image/"+img.name);
+        await uploadBytes(storageRef,img);
+        const downloadUrl = await getDownloadURL(storageRef);
+        setFile(downloadUrl);
+      }
+      else{
+        toast.error('Upload img');
+      }
+  }
 
   function handlemenu(event) {
     event.preventDefault();
@@ -105,7 +121,7 @@ function Createmenu({ setShowModel, setChange }) {
             <label className="text-xl text-black mx-2">Item Image</label>
             <input
               type="file"
-              onChange={(e) => setFile(e.target.files[0])} // Handle file change
+              onChange={handleUpload} // Handle file change
               className="border-2 border-gray-500 px-4 py-[4px] w-full rounded-xl text-lg focus:outline-none"
               placeholder="Image"
             />
